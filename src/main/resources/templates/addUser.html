@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>ลงทะเบียน</title>
+
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+    <link rel="icon" href="/images/icon.png">
+
+    <link rel="stylesheet" href="/fonts/fontawesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/plugins/animation/css/animate.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+<body>
+
+<!-- [ Pre-loader ] start -->
+<div class="loader-bg">
+    <div class="loader-track">
+        <div class="loader-fill"></div>
+    </div>
+</div>
+<!-- [ Pre-loader ] End -->
+
+<div class="auth-wrapper">
+    <div class="auth-content">
+        <div class="auth-bg">
+            <span class="r"></span>
+            <span class="r s"></span>
+            <span class="r s"></span>
+            <span class="r"></span>
+        </div>
+        <div class="card">
+            <div class="card-body text-center">
+                <form action="#" th:action="@{/addUser}" th:object="${user}" method="post">
+                    <div class="mb-4">
+                        <i class="feather icon-user-plus auth-icon"></i>
+                    </div>
+                    <h3 class="mb-4">ลงทะเบียน</h3>
+                    <h6 class="mb-4">ลงทะเบียนเพื่อขอรับ QR code </h6>
+                    <div class="mb-3">
+                        <div class="input-group">
+                            <input type="number" class="form-control" MAXLENGTH="10" placeholder="รหัสนักศึกษา" th:field="*{student_id}">
+                        </div>
+                        <div class="text-danger">
+                            <p th:if="${#fields.hasErrors('student_id')}" th:errors="*{student_id}"></p>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="ชื่อจริง" th:field="*{name}">
+                        </div>
+                        <div class="text-danger">
+                            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="นามสกุล" th:field="*{surname}">
+                        </div>
+                        <div class="text-danger">
+                            <p th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></p>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Email" th:field="*{email}" title="ตัวอย่าง : Email@silpakorn.edu">
+                        </div>
+                        <div class="text-danger">
+                            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="input-group">
+                            <input type="tel" class="form-control" MAXLENGTH="10" placeholder="เบอร์โทรติดต่อ" th:field="*{mobile}">
+                        </div>
+                        <div class="text-danger">
+                            <p th:if="${#fields.hasErrors('mobile')}" th:errors="*{mobile}"></p>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary shadow-2 mb-4">ลงทะเบียน</button>
+                    <p class="mb-0 text-muted">หากต้องการขอรับ QR code อีกครั้ง <a th:href="@{/getQr}"> กด</a></p>
+                    <p class="mb-0 text-muted"><a th:href="@{/}">กลับหน้าแรก</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Required Js -->
+<script src="/js/vendor-all.min.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/js/pcoded.min.js"></script>
+
+</body>
+</html>

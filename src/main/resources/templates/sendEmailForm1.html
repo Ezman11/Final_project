@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>send email</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+    <link rel="icon" href="/images/icon.png">
+    <!-- fontawesome icon -->
+    <link rel="stylesheet" href="/fonts/fontawesome/css/fontawesome-all.min.css">
+    <!-- animation css -->
+    <link rel="stylesheet" href="/plugins/animation/css/animate.min.css">
+    <!-- vendor css -->
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+<body>
+<!-- [ Pre-loader ] start -->
+<div class="loader-bg">
+    <div class="loader-track">
+        <div class="loader-fill"></div>
+    </div>
+</div>
+<!-- [ Pre-loader ] End -->
+
+<div class="auth-wrapper">
+    <div class="auth-content">
+        <div class="card">
+            <div class="card-body text-center">
+                <div class="card-header">
+                    <h5>send Email</h5>
+                </div>
+                <form th:action="@{/sendmail}" method="post">
+                    <div class="form-group">
+                        <h1 class="mb-1"></h1>
+                        <label for="exampleInputEmail1">Email address</label>
+                        <textarea type="email" class="form-control text-center" id="exampleInputEmail1" rows="1"
+                               placeholder="email" th:field="${form.email}" readonly></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Subject</label>
+                        <textarea type="text" class="form-control" id="exampleInputPassword1" rows="1" placeholder="Subject"
+                               th:field="${form.subject}"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Text</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                  th:field="${form.text}"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">&nbsp;Send&nbsp;</button>
+                </form>
+                <a th:href="@{/tbUser}">
+                    <button class="btn btn-secondary">Back</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Required Js -->
+<script src="/js/vendor-all.min.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/js/pcoded.min.js"></script>
+
+</body>
+</html>

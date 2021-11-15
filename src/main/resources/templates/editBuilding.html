@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Edit Building</title>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+    <link rel="icon" href="/images/icon.png">
+    <!-- fontawesome icon -->
+    <link rel="stylesheet" href="/fonts/fontawesome/css/fontawesome-all.min.css">
+    <!-- animation css -->
+    <link rel="stylesheet" href="/plugins/animation/css/animate.min.css">
+    <!-- vendor css -->
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+<body>
+<!-- [ Pre-loader ] start -->
+<div class="loader-bg">
+    <div class="loader-track">
+        <div class="loader-fill"></div>
+    </div>
+</div>
+<!-- [ Pre-loader ] End -->
+
+<div class="auth-wrapper">
+    <div class="auth-content">
+        <div class="card">
+            <div class="card-header">
+                <h5>Edit</h5>
+            </div>
+            <div class="card-body text-center">
+                <div class="input-group">
+                    <h5>ID : &nbsp; </h5><h5 th:text="${building.building_id}"></h5>
+                </div>
+                <form th:action="@{'/edit/'+${id}}" method="post">
+                    <input type="hidden" th:field="${building.building_id}">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Building Name"
+                               th:field="${building.name}">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                <a th:href="@{/tbBuilding}">
+                    <button class="btn btn-secondary">Back</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Required Js -->
+<script src="/js/vendor-all.min.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/js/pcoded.min.js"></script>
+
+</body>
+</html>

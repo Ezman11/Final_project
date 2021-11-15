@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <title>ยืนยัน otp</title>
+
+    <link rel="icon" href="/images/icon.png">
+    <!-- fontawesome icon -->
+    <link rel="stylesheet" href="/fonts/fontawesome/css/fontawesome-all.min.css">
+    <!-- animation css -->
+    <link rel="stylesheet" href="/plugins/animation/css/animate.min.css">
+    <!-- vendor css -->
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+<body>
+
+<!-- [ Pre-loader ] start -->
+<div class="loader-bg">
+    <div class="loader-track">
+        <div class="loader-fill"></div>
+    </div>
+</div>
+<!-- [ Pre-loader ] End -->
+
+<div class="auth-wrapper">
+    <div class="auth-content">
+        <div class="auth-bg">
+            <span class="r"></span>
+            <span class="r s"></span>
+            <span class="r s"></span>
+            <span class="r"></span>
+        </div>
+        <div class="card">
+            <form action="#" th:action="@{/otp}"  method="post">
+                <div class="card-body text-center">
+                    <div class="mb-4">
+                        <i class="feather icon-mail auth-icon"></i>
+                    </div>
+
+                    <input type="hidden" th:field="${tempUser.student_id}">
+
+                    <input type="hidden" th:field="${tempUser.name}">
+
+                    <input type="hidden" th:field="${tempUser.surname}">
+
+                    <input type="hidden" th:field="${tempUser.email}">
+
+                    <input type="hidden" th:field="${tempUser.mobile}">
+
+                    <input type="hidden" th:field="${otp.ref}">
+
+                    <input type="hidden" th:field="${otp.password}">
+
+                    <H5 class="mb-4" title="นี่คือ Email ที่คุณต้องการลงทะเบียน" th:text="${tempUser.email}"></H5>
+
+                    <div class="mb-3">
+                        <div class="input-group">
+                            <input type="text" MAXLENGTH="6" class="form-control" placeholder="OTP" th:field="${otp.otp}">
+                            <a>
+                                <button id="countdown" title="กดปุ่มนี้หากไม่ได้รับ OTP หรือ Ref ไม่ตรงกัน" type="button" class="btn btn-success btn-sm" onclick="location.reload();" value="รับ otp">
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="text-danger">
+                        <p th:if="${notMatch}">รหัส otp ไม่ถูกต้อง</p>
+                    </div>
+
+                    <div class="input-group" >
+                        <p class="" >Ref :&nbsp;</p><p class="" th:text="${otp.ref}">&nbsp;&nbsp;</p>
+                    </div>
+
+                    <button id="submit" class="btn btn-primary mb-4 shadow-2">ยืนยัน</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Required Js -->
+<script src="/js/vendor-all.min.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/js/pcoded.min.js"></script>
+<script src="/js/count.js"></script>
+
+</body>
+</html>
